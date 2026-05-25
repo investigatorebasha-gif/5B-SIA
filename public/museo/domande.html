@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domande — Museo Digitale delle Sabbie del Mondo</title>
+  <meta name="description" content="Hai una domanda sulla collezione di sabbie? Scrivici e ti risponderemo al più presto.">
+  <meta name="author" content="ITCS Maria Lazzari">
+  <style>
+/* ============================================
+   MUSEO DIGITALE DELLE SABBIE DEL MONDO
+   Design System — Premium Museum Edition
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-sand: #C79245;
+  --color-sand-light: #EAD8BF;
+  --color-sand-lighter: #FBF6EF;
+  --color-sand-dark: #A87A37;
+  --color-earth: #6E6257;
+  --color-earth-dark: #5A4530;
+  --color-earth-deeper: #2E2218;
+  --color-terracotta: #C86D42;
+  --color-terracotta-dark: #B65D34;
+  --color-ocean: #5C8A95;
+  --color-ocean-dark: #44707A;
+  --color-ocean-light: #8AB0B8;
+  --color-stone: #8A7E70;
+  --color-stone-light: #A8998A;
+  --color-ocra: #C79245;
+  --color-brown-warm: #6B3F21;
+  --color-bg: #F7F1E8;
+  --color-bg-warm: #FBF6EF;
+  --color-bg-card: #FFF9F2;
+  --color-bg-elevated: #FFFCF6;
+  --color-text: #2E2218;
+  --color-text-secondary: #6E6257;
+  --color-text-muted: #9A8C7C;
+  --color-text-inverse: #FFF8EF;
+  --color-border: #D8C6B0;
+  --color-border-light: #E8DAC4;
+  --color-divider: #E2D3BD;
+  --shadow-xs: 0 1px 2px rgba(70, 45, 22, 0.05);
+  --shadow-sm: 0 1px 3px rgba(70, 45, 22, 0.07), 0 1px 2px rgba(70, 45, 22, 0.04);
+  --shadow-md: 0 6px 18px rgba(70, 45, 22, 0.09), 0 2px 4px rgba(70, 45, 22, 0.05);
+  --shadow-lg: 0 14px 36px rgba(70, 45, 22, 0.12), 0 4px 10px rgba(70, 45, 22, 0.05);
+  --shadow-xl: 0 24px 60px rgba(70, 45, 22, 0.14), 0 10px 20px rgba(70, 45, 22, 0.06);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.35s;
+  --max-width: 1260px;
+  --content-width: 780px;
+  --header-height: 68px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+  color: var(--color-terracotta);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+a:hover { color: var(--color-terracotta-dark); }
+
+::selection { background: var(--color-sand-light); color: var(--color-earth-deeper); }
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  color: var(--color-text);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(250, 246, 238, 0.65);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom: 1px solid rgba(224, 213, 197, 0.4);
+  height: var(--header-height);
+  transition: background var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out),
+              border-color var(--duration-normal) var(--ease-out);
+}
+.site-header.scrolled {
+  background: rgba(250, 246, 238, 0.92);
+  box-shadow: 0 4px 30px rgba(42, 37, 32, 0.08);
+  border-bottom-color: rgba(224, 213, 197, 0.6);
+}
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 100%;
+  position: relative;
+}
+.header-logo-icon {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+.header-logo-img {
+  height: 38px;
+  width: auto;
+  border-radius: 4px;
+}
+.header-logo-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  z-index: 1;
+  pointer-events: auto;
+  max-width: calc(100% - 220px);
+  text-align: center;
+}
+.header-logo-text {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--color-earth-dark);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-left: auto;
+}
+.header-nav a {
+  color: var(--color-text-secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  transition: color var(--duration-fast) var(--ease-out);
+  position: relative;
+}
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-terracotta);
+  transition: width var(--duration-normal) var(--ease-out);
+}
+.header-nav a:hover { color: var(--color-terracotta); }
+.header-nav a:hover::after { width: 100%; }
+.header-nav a.active { color: var(--color-terracotta); }
+.header-nav a.active::after { width: 100%; }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--color-text);
+  z-index: 210;
+}
+.menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(42, 37, 32, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 190;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+.mobile-nav-overlay.active { opacity: 1; pointer-events: auto; }
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: var(--color-bg-elevated);
+  z-index: 195;
+  transform: translateX(100%);
+  pointer-events: none;
+  transition: transform var(--duration-normal) var(--ease-out);
+  box-shadow: -8px 0 30px rgba(42, 37, 32, 0.12);
+  padding: 5rem 2rem 2rem;
+}
+.mobile-nav.active { transform: translateX(0); pointer-events: auto; }
+.mobile-nav a {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--color-text);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+.mobile-nav a:hover { color: var(--color-terracotta); }
+
+/* ============================================
+   THEME TOGGLE
+   ============================================ */
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  margin-left: 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-light);
+  background: linear-gradient(135deg, var(--color-bg-elevated), var(--color-bg-warm));
+  color: var(--color-earth-dark);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              background var(--duration-normal) var(--ease-out);
+  box-shadow: var(--shadow-xs);
+}
+.theme-toggle:hover { transform: translateY(-1px); border-color: var(--color-terracotta); box-shadow: var(--shadow-sm); color: var(--color-terracotta); }
+.theme-toggle:active { transform: translateY(0) scale(.95); }
+.theme-toggle:focus-visible { outline: 2px solid var(--color-terracotta); outline-offset: 2px; }
+.theme-toggle .theme-toggle-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: rotate(-90deg) scale(.6);
+  transition: opacity .35s var(--ease-out), transform .45s var(--ease-out);
+  pointer-events: none;
+}
+.theme-toggle .theme-toggle-icon svg { width: 18px; height: 18px; }
+html[data-theme-mode="auto"] .theme-toggle .theme-toggle-icon[data-theme-icon="auto"],
+html[data-theme-mode="light"] .theme-toggle .theme-toggle-icon[data-theme-icon="light"],
+html[data-theme-mode="dark"]  .theme-toggle .theme-toggle-icon[data-theme-icon="dark"] {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+.theme-toggle-mobile {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 1.25rem 0 0;
+  padding: 0.85rem 1rem;
+  justify-content: flex-start;
+  border-radius: var(--radius-md);
+  gap: 0.85rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+}
+.theme-toggle-mobile .theme-toggle-icon {
+  position: relative;
+  inset: auto;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: none;
+}
+.theme-toggle-mobile .theme-toggle-icon svg { width: 22px; height: 22px; }
+html[data-theme-mode="auto"]  .theme-toggle-mobile .theme-toggle-icon[data-theme-icon="auto"],
+html[data-theme-mode="light"] .theme-toggle-mobile .theme-toggle-icon[data-theme-icon="light"],
+html[data-theme-mode="dark"]  .theme-toggle-mobile .theme-toggle-icon[data-theme-icon="dark"] {
+  display: inline-flex;
+  opacity: 1;
+  transform: none;
+}
+.theme-toggle-label { flex: 1; text-align: left; letter-spacing: 0.02em; }
+
+@media (max-width: 768px) {
+  .header-nav .theme-toggle { display: none; }
+}
+
+/* ============================================
+   DARK THEME
+   ============================================ */
+html[data-theme="dark"] {
+  --color-sand-lighter: #2A211A;
+  --color-sand-light: #3A2E22;
+  --color-bg: #1A130D;
+  --color-bg-warm: #221912;
+  --color-bg-card: #2A2018;
+  --color-bg-elevated: #2F2419;
+  --color-text: #F2E7D6;
+  --color-text-secondary: #C9B89C;
+  --color-text-muted: #8A7A65;
+  --color-text-inverse: #1A130D;
+  --color-border: #4A3A28;
+  --color-border-light: #3A2D1F;
+  --color-divider: #3A2D1F;
+  --color-earth-dark: #E6D6BC;
+  --color-earth-deeper: #F2E7D6;
+  --color-earth: #C9B89C;
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.35);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.45), 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 6px 18px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.35);
+  --shadow-lg: 0 14px 36px rgba(0,0,0,0.55), 0 4px 10px rgba(0,0,0,0.35);
+  --shadow-xl: 0 24px 60px rgba(0,0,0,0.6), 0 10px 20px rgba(0,0,0,0.4);
+}
+html.theme-anim,
+html.theme-anim body,
+html.theme-anim .site-header,
+html.theme-anim .mobile-nav,
+html.theme-anim .theme-toggle {
+  transition: background-color .45s var(--ease-out),
+              color .45s var(--ease-out),
+              border-color .45s var(--ease-out) !important;
+}
+
+/* ============================================
+   PAGE CONTENT
+   ============================================ */
+.page-hero {
+  background: var(--color-earth-deeper);
+  color: var(--color-text-inverse);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(184, 92, 56, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(200, 150, 62, 0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+.page-hero-eyebrow {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-sand-light);
+  margin-bottom: 1.2rem;
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+}
+.page-hero h1 {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  position: relative;
+  z-index: 1;
+}
+.page-hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.88);
+}
+.page-hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  opacity: 0.72;
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.75;
+  position: relative;
+  z-index: 1;
+}
+
+.page-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 2rem 5rem;
+}
+
+/* Form card */
+.form-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.form-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+.form-card .form-intro {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--color-bg-warm);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+  outline: none;
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-terracotta);
+  box-shadow: 0 0 0 3px rgba(200, 109, 66, 0.12);
+}
+.form-group textarea {
+  min-height: 160px;
+}
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 14px 32px;
+  background: var(--color-terracotta);
+  color: #fff8ef;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 250ms ease, background-color 250ms ease, box-shadow 250ms ease;
+  box-shadow: 0 10px 28px rgba(96, 55, 28, 0.18);
+  min-height: 48px;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.btn-submit:hover {
+  transform: translateY(-2px);
+  background: var(--color-terracotta-dark);
+  box-shadow: 0 16px 36px rgba(96, 55, 28, 0.24);
+}
+.btn-submit:active { transform: translateY(0); background: #a85429; }
+
+.form-note {
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: 1.6;
+}
+.form-note a { color: var(--color-terracotta); }
+
+/* Success message */
+.success-msg {
+  display: none;
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+  color: #2e7d32;
+  font-size: 0.95rem;
+  text-align: center;
+  line-height: 1.6;
+}
+html[data-theme="dark"] .success-msg {
+  background: #1b3a1e;
+  border-color: #2e7d32;
+  color: #81c784;
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+.back-link:hover { color: var(--color-terracotta); }
+
+/* Info box */
+.info-box {
+  background: var(--color-bg-warm);
+  border: 1px solid var(--color-border-light);
+  border-left: 4px solid var(--color-terracotta);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+.info-box strong { color: var(--color-text); }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  background: var(--color-earth-deeper);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: center;
+}
+.footer-inner { max-width: var(--max-width); margin: 0 auto; }
+.footer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+.footer-school { font-size: 0.85rem; opacity: 0.65; margin-bottom: 1.25rem; }
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+.footer-links a:hover { color: rgba(255, 255, 255, 0.95); }
+.footer-copy {
+  font-size: 0.75rem;
+  opacity: 0.4;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .header-inner { padding: 0 1.25rem; }
+  .header-nav { display: none; }
+  .menu-toggle { display: block; }
+  .mobile-nav-overlay, .mobile-nav { display: block; }
+  .page-hero { padding: 3.5rem 1.25rem 3rem; }
+  .page-content { padding: 2.5rem 1.25rem 4rem; }
+  .form-card { padding: 1.75rem 1.25rem; }
+}
+@media (max-width: 640px) {
+  .site-header { height: 52px; }
+  .header-inner { padding: 0 12px; }
+  .header-logo-img { max-height: 32px; }
+  .header-logo-center { max-width: calc(100vw - 110px); }
+  .header-logo-text { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .menu-toggle { flex-shrink: 0; margin-left: auto; }
+}
+  </style>
+  <script>
+    (function(){
+      try {
+        var m = localStorage.getItem('museo-theme-mode') || 'auto';
+        if (!['auto','light','dark'].includes(m)) m = 'auto';
+        var html = document.documentElement;
+        html.setAttribute('data-theme-mode', m);
+        var resolved = m === 'auto'
+          ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          : m;
+        html.setAttribute('data-theme', resolved);
+      } catch(e){}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="header-logo-icon">
+        <img src="../images/logo-scuola.png" alt="Logo ITCS Maria Lazzari" class="header-logo-img">
+      </a>
+      <a href="index.html" class="header-logo-center">
+        <span class="header-logo-text">Museo delle Sabbie</span>
+      </a>
+      <nav class="header-nav" aria-label="Navigazione principale">
+        <a href="index.html#mappa">Mappa</a>
+        <a href="index.html#collezione">Collezione</a>
+        <a href="index.html#info">Info</a>
+        <a href="domande.html" class="active">Domande</a>
+        <a href="faq.html">FAQ</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Cambia tema" title="Cambia tema">
+          <span class="theme-toggle-icon" data-theme-icon="auto" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 9 4.7 1.7 1.7 0 0 0 10 3.2V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          </span>
+          <span class="theme-toggle-icon" data-theme-icon="light" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          </span>
+          <span class="theme-toggle-icon" data-theme-icon="dark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          </span>
+        </button>
+      </nav>
+      <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false" id="menu-toggle">
+        <svg viewBox="0 0 24 24" id="menu-icon">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile navigation -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
+    <a href="index.html#mappa">Mappa</a>
+    <a href="index.html#collezione">Collezione</a>
+    <a href="index.html#info">Informazioni</a>
+    <a href="domande.html">Domande</a>
+    <a href="faq.html">FAQ</a>
+    <button type="button" class="theme-toggle theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Cambia tema">
+      <span class="theme-toggle-icon" data-theme-icon="auto" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 9 4.7 1.7 1.7 0 0 0 10 3.2V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </span>
+      <span class="theme-toggle-icon" data-theme-icon="light" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </span>
+      <span class="theme-toggle-icon" data-theme-icon="dark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </span>
+      <span class="theme-toggle-label" id="theme-toggle-label">Tema: predefinito</span>
+    </button>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <span class="page-hero-eyebrow">ITCS &laquo;Maria Lazzari&raquo; — Museo delle Sabbie</span>
+    <h1>Hai una <em>domanda</em>?</h1>
+    <p class="page-hero-subtitle">Scrivici direttamente: il nostro team risponderà alla tua domanda sulla collezione, sui campioni o sul progetto didattico.</p>
+  </section>
+
+  <!-- Content -->
+  <main class="page-content">
+    <a href="index.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Torna al museo
+    </a>
+
+    <div class="info-box">
+      <strong>Come funziona?</strong> Compila il modulo qui sotto con il tuo nome, la tua email e la tua domanda. Il messaggio verrà inviato direttamente al responsabile del progetto, che ti risponderà il prima possibile.
+    </div>
+
+    <div class="form-card">
+      <h2>Invia la tua domanda</h2>
+      <p class="form-intro">Hai curiosità sui campioni di sabbia, sul progetto didattico o sulla collezione? Siamo felici di risponderti.</p>
+
+      <form id="domande-form" novalidate>
+        <div class="form-group">
+          <label for="nome">Nome e Cognome <span style="color:var(--color-terracotta)">*</span></label>
+          <input type="text" id="nome" name="nome" placeholder="Es. Mario Rossi" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Indirizzo Email <span style="color:var(--color-terracotta)">*</span></label>
+          <input type="email" id="email" name="email" placeholder="Es. mario.rossi@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="oggetto">Oggetto</label>
+          <input type="text" id="oggetto" name="oggetto" placeholder="Es. Domanda sui campioni del Sahara">
+        </div>
+        <div class="form-group">
+          <label for="messaggio">La tua domanda <span style="color:var(--color-terracotta)">*</span></label>
+          <textarea id="messaggio" name="messaggio" placeholder="Scrivi qui la tua domanda..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Invia la domanda
+        </button>
+      </form>
+
+      <div class="success-msg" id="success-msg">
+        <strong>Messaggio inviato con successo!</strong><br>
+        Grazie per la tua domanda. Ti risponderemo all'indirizzo email indicato nel più breve tempo possibile.
+      </div>
+
+      <p class="form-note">
+        Il messaggio verrà inviato a <a href="mailto:v_marchiori@itcslazzari.eu">v_marchiori@itcslazzari.eu</a>.<br>
+        Puoi anche consultare le <a href="faq.html">domande frequenti (FAQ)</a> per trovare subito una risposta.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-title">Museo Digitale delle Sabbie del Mondo</p>
+      <p class="footer-school">ITCS "Maria Lazzari" — Progetto didattico</p>
+      <div class="footer-links">
+        <a href="index.html#mappa">Mappa</a>
+        <a href="index.html#collezione">Collezione</a>
+        <a href="index.html#info">Informazioni</a>
+        <a href="domande.html">Domande</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 ITCS "Maria Lazzari".</p>
+    </div>
+  </footer>
+
+  <script>
+    /* --- Header scroll effect --- */
+    (function() {
+      var header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          header.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
+      }
+    })();
+
+    /* --- Mobile menu --- */
+    (function() {
+      var toggle = document.getElementById('menu-toggle');
+      var overlay = document.getElementById('mobile-nav-overlay');
+      var nav = document.getElementById('mobile-nav');
+      if (!toggle || !nav) return;
+      function openMenu() {
+        nav.classList.add('active');
+        if (overlay) overlay.classList.add('active');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        nav.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        nav.classList.contains('active') ? closeMenu() : openMenu();
+      });
+      if (overlay) overlay.addEventListener('click', closeMenu);
+      nav.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', closeMenu); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+    })();
+
+    /* --- Theme Toggle --- */
+    (function() {
+      var STORAGE_KEY = 'museo-theme-mode';
+      var ORDER = ['auto', 'light', 'dark'];
+      var LABELS = { auto: 'Tema: predefinito', light: 'Tema: chiaro', dark: 'Tema: scuro' };
+      var html = document.documentElement;
+      var mql = window.matchMedia('(prefers-color-scheme: dark)');
+      function getMode() {
+        var m = localStorage.getItem(STORAGE_KEY) || 'auto';
+        return ORDER.indexOf(m) >= 0 ? m : 'auto';
+      }
+      function applyMode(mode, animate) {
+        if (animate) {
+          html.classList.add('theme-anim');
+          setTimeout(function(){ html.classList.remove('theme-anim'); }, 600);
+        }
+        html.setAttribute('data-theme-mode', mode);
+        var resolved = mode === 'auto' ? (mql.matches ? 'dark' : 'light') : mode;
+        html.setAttribute('data-theme', resolved);
+        document.querySelectorAll('.theme-toggle').forEach(function(btn){
+          btn.setAttribute('aria-label', LABELS[mode]);
+          btn.title = LABELS[mode];
+        });
+        var lbl = document.getElementById('theme-toggle-label');
+        if (lbl) lbl.textContent = LABELS[mode];
+      }
+      function cycle() {
+        var current = getMode();
+        var next = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length];
+        localStorage.setItem(STORAGE_KEY, next);
+        applyMode(next, true);
+      }
+      applyMode(getMode(), false);
+      mql.addEventListener('change', function(){ if (getMode() === 'auto') applyMode('auto', true); });
+      function bind() {
+        document.querySelectorAll('.theme-toggle').forEach(function(btn){
+          if (btn.dataset.themeBound === '1') return;
+          btn.dataset.themeBound = '1';
+          btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); cycle(); });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bind); }
+      else { bind(); }
+    })();
+
+    /* --- Form submit: apre il client email con i dati precompilati --- */
+    (function() {
+      var form = document.getElementById('domande-form');
+      var successMsg = document.getElementById('success-msg');
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var nome = document.getElementById('nome').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var oggetto = document.getElementById('oggetto').value.trim();
+        var messaggio = document.getElementById('messaggio').value.trim();
+
+        /* Validazione base */
+        if (!nome || !email || !messaggio) {
+          alert('Per favore compila tutti i campi obbligatori (Nome, Email e Domanda).');
+          return;
+        }
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert('Per favore inserisci un indirizzo email valido.');
+          return;
+        }
+
+        /* Costruisce il mailto */
+        var subject = oggetto
+          ? oggetto
+          : 'Domanda dal Museo delle Sabbie — ' + nome;
+        var body = 'Nome: ' + nome + '\n'
+                 + 'Email di risposta: ' + email + '\n\n'
+                 + 'Domanda:\n' + messaggio;
+
+        var mailtoLink = 'mailto:v_marchiori@itcslazzari.eu'
+          + '?subject=' + encodeURIComponent(subject)
+          + '&body=' + encodeURIComponent(body);
+
+        window.location.href = mailtoLink;
+
+        /* Mostra messaggio di conferma e resetta il form */
+        successMsg.style.display = 'block';
+        form.reset();
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    })();
+  </script>
+</body>
+</html>
